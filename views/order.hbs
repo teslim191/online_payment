@@ -1,0 +1,31 @@
+<section class="row">
+  <div class="col-md-6 mt-3 p-5 m-auto">
+    <img src="/images/brave.png" width="100" alt="">
+    <h3 class="my-3">Order Details</h3>
+    <form action="/paystack/pay" method="POST" class="w-75">
+    <input type="hidden" value="{{user_name}}" name="name">
+    <input type="hidden" value="{{user_email}}" name="email">
+      <label for="">Product Name</label>
+      <input
+        type="text"
+        name="product_name"
+        value="{{product_name}}"
+        class="form-control"
+      />
+      <label for="">Product Description</label>
+      <textarea
+        name="product_description"
+        id="body"
+        class="form-control"
+      >{{product_description}}</textarea>
+      <label for="">Product Price</label>
+      <input
+        type="number"
+        value={{number_format product_amount}}
+        name="amount"
+        class="form-control"
+      />
+      <button type="submit" class="btn btn-success mt-3">Pay <i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+</section>

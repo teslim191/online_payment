@@ -1,0 +1,17 @@
+  <a href="/" class="btn btn-warning mt-4 text-light">Go back Home</a>
+  <h2>Welcome {{name}}</h2>
+<section class="row">
+  <h2 class="text-center mt-3">Products</h2>
+  {{#each product}}
+    <div class="col-lg-4 mt-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{product_name}}</h5>
+          <p class="lead">{{product_description}}</p>
+          <p class="lead">₦{{product_amount}}</p>
+          <a href="/order/{{_id}}" class="btn btn-secondary ">Purchase <i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</section>

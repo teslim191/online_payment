@@ -1,0 +1,33 @@
+<section class="py-2">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <h1 class="display-4 mt-3 pt-5">
+        E-book on Technology
+      </h1>
+      <p class="lead">
+        Matt Ridley: How Innovation Works
+        <br />
+        And Why it Flourishes in Freedom
+      </p>
+      <form action="/charge" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"
+          data-key="pk_test_51LRHvwGzXmhzxBCdVjBq7QLjsblTn70ux2KUgbaaraXe6ieRrp4rd8jA0LQJDqtnDT5zcXjSRVeU6bgWyQw8ufEJ00xLEzDzdn"
+          data-amount="2500"
+          data-name="E-book on Technology"
+          data-description="E-book written by Matt Ridley"
+          data-image="/images/matt-ridley.jpg"
+          data-locale="auto"
+        ></script>
+        <script>
+            document.getElementsByClassName("stripe-button-el")[0].style.display = "none";
+        </script>
+        <button type="submit" class="btn btn-success btn-lg">Pay $25</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <img src="/images/matt-ridley.jpg" alt="" class="img-fluid" />
+    </div>
+  </div>
+</section>
