@@ -19,7 +19,7 @@ connectDB();
 app.use(express.static("public"));
 
 // helpers
-const { number_format } = require('./helpers/format')
+const { number_format,stripTags } = require('./helpers/format')
 // register helpers in handlebars
 // handlebars middleware
 app.engine(
@@ -27,7 +27,7 @@ app.engine(
   exphbs.engine({
     defaultLayout: "main",
     extname: ".hbs",
-    helpers: { number_format }
+    helpers: { number_format,stripTags },
   })
 );
 app.set("view engine", ".hbs");
@@ -37,6 +37,7 @@ app.set("view engine", ".hbs");
 app.use(
   session({
     secret: "secret",
+    maxAge: 3600000,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
@@ -46,6 +47,9 @@ app.use(
 app.use("/", require("./routes/index"));
 app.use("/products", require("./routes/products"));
 app.use("/order", require("./routes/order"));
+
+// accessing the image publicly
+app.use('/public/images', express.static('public/images'));
 
 const PORT = process.env.PORT || 9000;
 
