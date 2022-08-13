@@ -1,0 +1,23 @@
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+#btn:hover{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+  
+  .card {
+    margin: auto;
+  }
+  .col-md-4 img{
+    width: 50%;
+  }
+}
+@media screen and (min-width: 771px){
+  .card{
+    margin: 2px;
+  }
+}

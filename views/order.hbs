@@ -1,4 +1,4 @@
-<section class="row">
+{{!-- <section class="row">
   <div class="col-md-6 mt-3 p-5 m-auto">
     <img src="/images/brave.png" width="100" alt="">
     <h3 class="my-3">Order Details</h3>
@@ -28,4 +28,41 @@
       <button type="submit" class="btn btn-success mt-3">Pay <i class="fa-solid fa-paper-plane"></i></button>
     </form>
   </div>
-</section>
+</section> --}}
+<div class="pt-5 mt-5">
+
+  <a href="/" class="btn btn-warning text-light">&larr; Go back</a>
+  <section class="row pt-5">
+    <div class="col-md-4">
+      <img src="{{product_image}}" style="max-width: 100%;" alt="" />
+      <form action="/paystack/pay" method="POST" class="w-75">
+        <input type="hidden" value="{{user_name}}" name="name" />
+        <input type="hidden" value="{{user_email}}" name="email" />
+        <input
+          type="hidden"
+          name="product_name"
+          value="{{product_name}}"
+          class="form-control"
+        />
+        <input
+          type="hidden"
+          value={{number_format product_amount}}
+          name="amount"
+          class="form-control"
+        />
+        <button
+          id="btn"
+          type="submit"
+          class="mt-3 p-2"
+          style="background-color: transparent;"
+        >Purchase
+          <i class="fa-solid fa-cart-shopping"></i></button>
+      </form>
+      <p class="text-light"></p>
+    </div>
+    <div class="col-md-8">
+      <h2 class="text-light">{{product_name}} -- ₦{{product_amount}}</h2>
+      <p class="text-light">{{stripTags product_description}}</p>
+    </div>
+  </section>
+</div>

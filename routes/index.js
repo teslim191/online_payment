@@ -9,6 +9,12 @@ const bcrypt = require("bcryptjs");
 const { initializePayment, verifyPayment } =
   require("../config/Paystack")(request);
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
+const apicache = require("apicache")
+
+// init cache middleware
+const cache = apicache.middleware
+
+
 
 // get request to the register page
 router.get("/register", ensureGuest, (req, res) => {
@@ -73,9 +79,12 @@ router.post("/login", async (req, res) => {
 });
 
 // a get request to the index page
-router.get("/", ensureAuth, async (req, res) => {
+router.get("/", ensureAuth, cache("10 minutes"), async (req, res) => {
   try {
     let user = await User.findById(req.session.user._id);
+    if (!user) {
+      res.redirect("/login");
+    }
     let product = await Product.find().lean();
     // console.log(user.name, user.email)
     res.render("index", {

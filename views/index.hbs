@@ -1,18 +1,24 @@
-  <a href="/" class="btn btn-warning mt-4 text-light">Go back Home</a>
-  <h2>Welcome {{name}}</h2>
-<section class="row">
-  <h2 class="text-center mt-3">Products</h2>
-  {{#each product}}
-    <div class="col-lg-4 mt-4">
-      <div class="card h-90 w-100">
-        <div class="card-body">
-          <h5 class="card-title">{{product_name}}</h5>
-          <img src="{{product_image}}" alt="" class="img-fluid" style="max-width: 50%;">
-          <p class="lead">{{stripTags product_description}}</p>
-          <p class="lead">₦{{product_amount}}</p>
-          <a href="/order/{{_id}}" class="btn btn-secondary ">Purchase <i class="fa-solid fa-cart-shopping"></i></a>
+<section class="pt-5 mt-5">
+  <a
+    href="/"
+    class="btn btn-warning text-light"
+  >Go back Home</a>
+  <div class="row">
+    <h3 class="text-light mt-2"><i class="fa-solid fa-user"></i> {{name}}</h3>
+    <h2 class="text-center mt-3 text-danger bg-dark"><marquee>Flash Sales With More Than 50% Discount On Products</marquee></h2>
+    {{#each product}}
+      <div class="col-lg-3 col-md-6 col-sm-6 mt-4">
+        <div class="card card-deck h-50" style="width: 16rem;">
+          <img src="{{product_image}}" alt="" class="card-img-top" style="" />
+          <div class="card-body bg-light">
+            <h5 class="card-title">{{product_name}}</h5>
+            <p class="">{{stripTags (truncate product_description)}}</p>
+            <p style="font-weight: bolder;">₦{{product_amount}}</p>
+            <a href="/order/{{_id}}" class="btn btn-secondary">Purchase
+              <i class="fa-solid fa-cart-shopping"></i></a>
+          </div>
         </div>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </section>

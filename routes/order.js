@@ -2,8 +2,12 @@ const express = require("express");
 const router = express.Router();
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const Product = require("../models/Product");
+const apicache = require("apicache")
 
-router.get("/:id", ensureAuth, async (req, res) => {
+// init cache middleware
+const cache = apicache.middleware
+
+router.get("/:id", ensureAuth, cache("10 minutes"), async (req, res) => {
   try {
     let product = await Product.findById({ _id: req.params.id });
     if (!product) {
@@ -17,6 +21,7 @@ router.get("/:id", ensureAuth, async (req, res) => {
         product_name: product.product_name,
         product_description: product.product_description,
         product_amount: parseFloat(product.product_amount),
+        product_image: product.product_image
       });
     }
   } catch (error) {

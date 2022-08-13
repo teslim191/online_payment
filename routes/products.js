@@ -2,7 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
 const  upload  = require('../middleware/upload');
-router.get('/addproducts', (req, res) => {
+const apicache = require("apicache")
+
+// init cache middleware
+const cache = apicache.middleware
+const cacheTime = cache("10 minutes")
+
+// get request to the addproducts page
+router.get('/addproducts', cacheTime, (req, res) => {
   res.render('addProducts')
 })
 

@@ -4,5 +4,8 @@ module.exports = {
     },
     stripTags: (product_description) => {
         return product_description.replace(/<(?:.|\n)*?>/gm, '')
+    },
+    truncate: (product_description)=> {
+        return product_description.substring(0, 50)+"..."
     }
 }

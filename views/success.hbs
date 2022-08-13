@@ -1,11 +1,42 @@
-<section class="row">
+{{!-- <section class="row">
   <div class="col-md-6 m-auto mt-5 bg-secondary p-5 text-light">
     <div class="card-body">
       <p class="card-text display-6">Thank you
         {{name}}
-        for Purchasing a {{product_name}}
+        for Purchasing a
+        {{product_name}}
         from us</p>
       <a href="/" class="btn btn-primary">Home</a>
     </div>
   </div>
-</section>
+</section> --}}
+
+    <div id="myModal" class="modal fade modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-confirm">
+        <div class="modal-content bg-success text-light">
+          <div class="modal-header">
+            <h4 class="text-center">Success!</h4>
+            <button
+              type="button"
+              class="btn-close bg-light"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="close"
+            ></button>
+          </div>
+          <div class="p-5">
+            <p class="text-center">
+              Thank you {{name}} for Purchasing a {{product_name}} from us
+            </p>
+          </div>
+          <div class="text-center mb-3">
+            <a
+              data-dismiss="modal"
+              class="btn btn-outline-light px-3"
+              href="/"
+              >Home</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>

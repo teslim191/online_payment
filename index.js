@@ -6,7 +6,7 @@ const app = express();
 const _ = require("lodash");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-
+const apicache = require('apicache')
 dotenv.config({ path: "./config/.env" });
 
 // bodyparser middleware
@@ -19,7 +19,7 @@ connectDB();
 app.use(express.static("public"));
 
 // helpers
-const { number_format,stripTags } = require('./helpers/format')
+const { number_format,stripTags, truncate } = require('./helpers/format')
 // register helpers in handlebars
 // handlebars middleware
 app.engine(
@@ -27,17 +27,20 @@ app.engine(
   exphbs.engine({
     defaultLayout: "main",
     extname: ".hbs",
-    helpers: { number_format,stripTags },
+    helpers: { number_format,stripTags, truncate },
   })
 );
 app.set("view engine", ".hbs");
 
+// init cache middleware
+// const cache = apicache.middleware
+
+// app.use(cache('10 minutes'))
 
 // session middleware
 app.use(
   session({
     secret: "secret",
-    maxAge: 3600000,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
@@ -50,6 +53,7 @@ app.use("/order", require("./routes/order"));
 
 // accessing the image publicly
 app.use('/public/images', express.static('public/images'));
+app.use('/order/public/images', express.static('public/images'));
 
 const PORT = process.env.PORT || 9000;
 
