@@ -2,6 +2,6 @@
 
 # The essence of the project is to learn how to use the paystack payment system.
 # how to use
-#clone app with git clone or download as zip and extract
-#run npm i
-#run npm run dev
+1. clone app with git clone or download as zip and extract
+2. run npm i
+3. run npm run dev
