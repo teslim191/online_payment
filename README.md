@@ -5,4 +5,6 @@
 1. clone app with git clone or download as zip and extract
 2. run npm i
 3. run npm run dev
-4. go to http://localhost:9000  
+4. create a config.env file add a mongo uri connection string
+5. run npm run dev to run server
+6. go to http://localhost:9000  
